@@ -12,10 +12,19 @@ The local part of recipient addresses is replaced with "xxxx". In addition the l
 the converted output will be:
 
     type,orig,rcpt,dsnDiag
-    b,noreply-xxxx=hotmail.com@sender.com,xxxx@hotmail.com,550 <xxxx@hotmail.com> Recipient not found
+    b,noreply-xxxx=provider.com@sender.com,xxxx@provider.com,550 <xxxx@provider.com> Recipient not found
 
 The program reads from stdin and writes to stdout. It can be used as follows:
 
     acctanon < acct-2018-12-10-0000.csv > acct-anon-2018-12-10-0000.csv
 
-See the [releases](https://github.com/postmastery/acctanon/releases) tab for precompiled binaries.
+See the [releases](https://github.com/postmastery/acctanon/releases) tab for precompiled binaries. We recommend using /opt/pmta when installing on PowerMTA for Linux and \pmta\bin for Windows.
+
+When building from source you need the [Go distribution](https://golang.org/doc/install). Then do:
+
+    cd $GOPATH
+    go get github.com/postmastery/acctanon
+    cd src/github.com/postmastery/acctanon
+    go install
+
+Please [submit an issue](https://github.com/postmastery/acctanon/issues) or email the author if you have suggestions for improvement.
