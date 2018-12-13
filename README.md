@@ -4,12 +4,12 @@ Acctanon is a program written in Go that can be used to anonymise PowerMTA accou
 
 This program can be used to convert accounting files before sharing with another party, such as Postmastery. It is available in binary versions for Windows, Linux, and macOS. If required, users can also build the binary from source using the [Go distribution](https://golang.org/doc/install).
 
-The local part of recipient addresses is replaced with "xxxx". In addition the local part is masked when found in VERP sender addresses and DSN messages. Given the following (simplified) input for example:
+The local part of recipient addresses is replaced with "xxxx". In addition the local part is masked when found in VERP sender addresses and DSN messages. For example, given the following (simplified) input:
 
     type,orig,rcpt,dsnDiag
     b,noreply-pien=provider.com@sender.com,pien@provider.com,550 <pien@provider.com> Recipient not found
 
-The converted output will be:
+the converted output will be:
 
     type,orig,rcpt,dsnDiag
     b,noreply-xxxx=hotmail.com@sender.com,xxxx@hotmail.com,550 <xxxx@hotmail.com> Recipient not found
