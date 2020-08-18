@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"encoding/csv"
 	"fmt"
 	"io"
@@ -13,7 +14,16 @@ const mask = "xxxx"
 
 func main() {
 
-	r := csv.NewReader(os.Stdin)
+	// skip utf-8 byte order mark if present
+	br := bufio.NewReader(os.Stdin)
+	bom, err := br.Peek(3)
+	if err != nil {
+		return
+	}
+	if bom[0] == 0xEF && bom[1] == 0xBB && bom[2] == 0xBF {
+		br.Discard(3)
+	}
+	r := csv.NewReader(br)
 	r.ReuseRecord = true
 
 	// read header line
